@@ -47,14 +47,14 @@ function HomePage() {
                             <option value="PAN">PAN</option>
                         </select>
                         {destination && (
-                            <h4>Path from USA to: {destination}</h4>
+                            <h4>Path from USA to {destination}</h4>
                         )}
                         <div className="countries">
-                            {route.map((country, index) => (
-                                <p key={country}>
-                                    {index+1}. {country}
-                                </p>
-                            ))}
+                            <ul>
+                                {route.map((country, index) => (
+                                    <li key={country}>{country}</li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
