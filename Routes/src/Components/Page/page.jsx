@@ -51,7 +51,7 @@ function HomePage() {
                         )}
                         <div className="countries">
                             <ul>
-                                {route.map((country, index) => (
+                                {route.map((country) => (
                                     <li key={country}>{country}</li>
                                 ))}
                             </ul>
