@@ -1,15 +1,26 @@
 import {useState} from "react"
 import './page.css'
-import countries from './images/countries.png'
+
 import {routeFinder} from '../routeFinder/routeFinder'
 
+import countries from './images/countries.png'
+import CHRobinson from './images/C.H. Robinson.png'
+
 function HomePage() {
+
     const[route, setRoute] = useState([]);
+    const[destination, setDestination] = useState("")
+
     return (
         <>
             <header className="header">
-                <h3>C.H. Robinson Take Home Project</h3>
-                <h4>- By Alexander Dobek</h4>
+                <a href="https://www.chrobinson.com/en-us/" target="_blank" rel="noopener noreferrer">
+                    <img src={CHRobinson} alt="C.H. Robinson Logo" />
+                </a>
+                <div>
+                    <h3>C.H. Robinson Take Home Project</h3>
+                    <h4>- By Alexander Dobek</h4> 
+                </div>
             </header>
             <hr />
             <main>
@@ -21,20 +32,30 @@ function HomePage() {
                             onChange={(event) => {
                                 const selectedDestination = event.target.value
                                 setRoute(routeFinder(selectedDestination))
+                                setDestination(event.target.value)
                             }}
                         >
                             <option value="" disabled>Select a Destination</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Mexico">Mexico</option>
-                            <option value="Belize">Belize</option>
-                            <option value="Guatemala">Guatemala</option>
-                            <option value="El Salvador">El Salvador</option>
-                            <option value="Honduras">Honduras</option>
-                            <option value="Nicaragua">Nicaragua</option>
-                            <option value="Costa Rica">Costa Rica</option>
-                            <option value="Panama">Panama</option>
+                            <option value="CAN">CAN</option>
+                            <option value="MEX">MEX</option>
+                            <option value="BLZ">BLZ</option>
+                            <option value="GTM">GTM</option>
+                            <option value="SLV">SLV</option>
+                            <option value="HND">HND</option>
+                            <option value="NIC">NIC</option>
+                            <option value="CRI">CRI</option>
+                            <option value="PAN">PAN</option>
                         </select>
-                        <p>Route: {route.join(' -> ')}</p>
+                        {destination && (
+                            <h4>Path from USA to: {destination}</h4>
+                        )}
+                        <div className="countries">
+                            {route.map((country, index) => (
+                                <p key={country}>
+                                    {index+1}. {country}
+                                </p>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </main>

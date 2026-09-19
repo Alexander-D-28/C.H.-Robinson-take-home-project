@@ -2,6 +2,9 @@
     color: black;
     line-height: 1;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 hr {
     border: 0;
@@ -17,4 +20,7 @@ hr {
     margin-left: 50px;
     margin-top: 5px;
     text-align: left;
+}
+.countries {
+    margin-top: -15px;
 }

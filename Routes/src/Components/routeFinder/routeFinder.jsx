@@ -1,21 +1,21 @@
 //Graph consisting of countries as vertices and borders as edges
 const graph = {
-    "United States": ["Canada", "Mexico"],
-    "Canada": ["United States"],
-    "Mexico": ["United States", "Belize", "Guatemala"],
-    "Belize": ["Mexico", "Guatemala"],
-    "Guatemala": ["Mexico", "Belize", "El Salvador", "Honduras"],
-    "El Salvador": ["Guatemala", "Honduras"],
-    "Honduras": ["Guatemala", "El Salvador", "Nicaragua"],
-    "Nicaragua": ["Honduras", "Costa Rica"],
-    "Costa Rica": ["Nicaragua", "Panama"],
-    "Panama": ["Costa Rica"]
+    USA: ["CAN", "MEX"],
+    CAN: ["USA"],
+    MEX: ["USA", "BLZ", "GTM"],
+    BLZ: ["MEX", "GTM"],
+    GTM: ["MEX", "BLZ", "SLV", "HND"],
+    SLV: ["GTM", "HND"],
+    HND: ["GTM", "SLV", "NIC"],
+    NIC: ["HND", "CRI"],
+    CRI: ["NIC", "PAN"],
+    PAN: ["CRI"]
 }
 
 //Uses Breadth First Search to search through our graph to find shortest path (O(Vertices + Edges))
 export function routeFinder(destination) {
-    const queue = [["United States"]];
-    const visited = new Set(["United States"]);
+    const queue = [["USA"]];
+    const visited = new Set(["USA"]);
 
     while(queue.length > 0) {
         //dequeue element
