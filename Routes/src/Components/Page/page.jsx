@@ -13,6 +13,7 @@ function HomePage() {
 
     return (
         <>
+           {/* Header of page with title/name/logo*/}
             <header className="header">
                 <a href="https://www.chrobinson.com/en-us/" target="_blank" rel="noopener noreferrer">
                     <img src={CHRobinson} alt="C.H. Robinson Logo" />
@@ -23,18 +24,22 @@ function HomePage() {
                 </div>
             </header>
             <hr />
+            {/*Contains main content of page including image, input, and output to our algorithm*/}
             <main>
                 <div className="content">
                     <img src={countries} alt="image of North American Countries" />
                     <div className="input">
                         <p>Source: United States</p>
                         <select
+                            value={destination}
+                            //calls routeFinder from routeFinder.js to compute BFS algorithm to determine fastest route 
                             onChange={(event) => {
                                 const selectedDestination = event.target.value
                                 setRoute(routeFinder(selectedDestination))
-                                setDestination(event.target.value)
+                                setDestination(selectedDestination)
                             }}
                         >
+                            {/*Dropdown menu to select destination country from USA*/}
                             <option value="" disabled>Select a Destination</option>
                             <option value="CAN">CAN</option>
                             <option value="MEX">MEX</option>
@@ -49,6 +54,7 @@ function HomePage() {
                         {destination && (
                             <h4>Path from USA to {destination}</h4>
                         )}
+                        {/*Displays the route from USA to selected country from the dropdown menu*/}
                         <div className="countries">
                             <ul>
                                 {route.map((country) => (
