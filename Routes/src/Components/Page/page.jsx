@@ -3,13 +3,34 @@ import './page.css'
 
 import {routeFinder} from '../routeFinder/routeFinder'
 
-import countries from './images/countries.png'
+import Countries from './images/countries.png'
 import CHRobinson from './images/C.H. Robinson.png'
 
 function HomePage() {
 
     const[route, setRoute] = useState([]);
     const[destination, setDestination] = useState("")
+
+    //holds options for dropdown meni
+    const countries = [
+        ["Canada", "CAN"],
+        ["MEX", "MEX"],
+        ["BLZ", "BLZ"],
+        ["GTM", "GTM"],
+        ["SLV", "SLV"],
+        ["HND", "HND"],
+        ["NIC", "NIC"],
+        ["CRI", "CRI"],
+        ["PAN", "PAN"]
+    ]
+    const options = [];
+    for(const[value, label] of countries) {
+        options.push(
+            <option key={value} value={value}>
+                {label}
+            </option>
+        )
+    }
 
     return (
         <>
@@ -27,7 +48,7 @@ function HomePage() {
             {/*Contains main content of page including image, input, and output to our algorithm*/}
             <main>
                 <div className="content">
-                    <img src={countries} alt="image of North American Countries" />
+                    <img src={Countries} alt="image of North American Countries" />
                     <div className="input">
                         <p>Source: United States</p>
                         <select
@@ -41,15 +62,7 @@ function HomePage() {
                         >
                             {/*Dropdown menu to select destination country from USA*/}
                             <option value="" disabled>Select a Destination</option>
-                            <option value="CAN">CAN</option>
-                            <option value="MEX">MEX</option>
-                            <option value="BLZ">BLZ</option>
-                            <option value="GTM">GTM</option>
-                            <option value="SLV">SLV</option>
-                            <option value="HND">HND</option>
-                            <option value="NIC">NIC</option>
-                            <option value="CRI">CRI</option>
-                            <option value="PAN">PAN</option>
+                            {options}
                         </select>
                         {destination && (
                             <h4>Path from USA to {destination}</h4>

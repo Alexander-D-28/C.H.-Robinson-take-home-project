@@ -1,7 +1,7 @@
 //Graph consisting of countries as vertices and borders as edges
 const graph = {
-    USA: ["CAN", "MEX"],
-    CAN: ["USA"],
+    USA: ["Canada", "MEX"],
+    Canada: ["USA"],
     MEX: ["USA", "BLZ", "GTM"],
     BLZ: ["MEX", "GTM"],
     GTM: ["MEX", "BLZ", "SLV", "HND"],
